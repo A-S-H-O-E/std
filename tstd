@@ -1,0 +1,14 @@
+import pandas as pd
+import statistics as st
+df = pd.read_csv('data.csv')
+height3 = df['Height(Inches)'].tolist()
+mean = st.mean(height3)
+std = st.stdev(height3)
+ssstd = mean - 3*std
+sestd = mean + 3*std
+sstd = []
+for h in height3:
+    if(h>ssstd and h<sestd):
+        sstd.append(h)
+fp = (len(sstd)/len(height3))*100
+print(fp)
